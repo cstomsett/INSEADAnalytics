@@ -110,11 +110,11 @@ factor_attributes_used = c(2:30)
 
 # Please ENTER the selection criterions for the factors to use. 
 # Choices: "eigenvalue", "variance", "manual"
-factor_selectionciterion = "eigenvalue"
+factor_selectionciterion = "variance"
 
 # Please ENTER the desired minumum variance explained 
 # (Only used in case "variance" is the factor selection criterion used). 
-minimum_variance_explained = 65  # between 1 and 100
+minimum_variance_explained = 53  # between 1 and 100
 
 # Please ENTER the number of factors to use 
 # (Only used in case "manual" is the factor selection criterion used).
@@ -237,7 +237,7 @@ Let's now see how the "top factors" look like.
 if (factor_selectionciterion == "eigenvalue")
   factors_selected = sum(Variance_Explained_Table_copy[,1] >= 1)
 if (factor_selectionciterion == "variance")
-  factors_selected = 1:head(which(Variance_Explained_Table_copy[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
+  factors_selected = head(which(Variance_Explained_Table_copy[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
 if (factor_selectionciterion == "manual")
   factors_selected = manual_numb_factors_used
 ```
