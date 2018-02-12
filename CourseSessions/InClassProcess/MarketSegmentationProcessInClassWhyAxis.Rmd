@@ -172,9 +172,7 @@ iprint.df(thecor_thres, scale=TRUE)
 
 **Answers:**
 
-1. We elected to examine pairs of responses that had correlations higher than 0.55. As can be seen in the plot above, there are five pairs of responses that fit these criteria. When examining these questions, it is apparent that the pairs are connected. Many of the correlations come from sequential questions that investigate a similar topic, for example Q's 6 and 7 ask about reward/achievement, Q's 13 and 14 ask about the latest and greatest, Q's 16 and 17 about boating knowledge, and Q's 27 and 28 ask about passion. Q's 3 and 9 are highly correlated, and while not sequential they do both ask about the meaning of the boat as a status symbol.  
-
-We believe that these correlations make sense, as they represent similar questions in the data set
+1. We elected to examine pairs of responses that had correlations higher than 0.55. As can be seen in the plot above, there are five pairs of responses that fit these criteria. When examining these questions, it is apparent that the pairs are connected. Many of the correlations come from sequential questions that investigate a similar topic, for example Q's 6 and 7 ask about reward/achievement, Q's 13 and 14 ask about the latest and greatest, Q's 16 and 17 about boating knowledge, and Q's 27 and 28 ask about passion. Q's 3 and 9 are highly correlated, and while not sequential they do both ask about the meaning of the boat as a status symbol. We believe that these correlations make sense, as they represent similar questions in the data set
 
 2. These correlations imply that the customers have answered consistently to questions that are worded in a similar manner, giving us additional confidence in the data set. In addition, it means that some of these variables are likely describing similar attributes, and that it may be possible to reduce the number of dimensions in the dataset.
 
@@ -280,28 +278,27 @@ iprint.df(Rotated_Factors_thres, scale=TRUE)
 1. For this analysis, we examined components 1, 2 and 3, focusing in on the five most significant questions in each component. In component 1, we saw lots of responses around the power and status of the boat. For component 2, the questions revolved around adventure, nature, and escape. Component 3 represented questions focused on the reliability and technical aspects of the boat. Intuitively, these results make business sense, as they represent well defined categories of aspects that people value in their boats.
 
 2. 
-a) While we experimented with different statistical methods for choosing the apprpriate number of components, such as choosing a threshold value and manual selection, we decided that the eigenvalue method was the most appropriate as the results in the other two methods changed significantly depending on which input values were used. For the eigenvalue method, the threshold of 1 means that 5 components should be used.
+  + While we experimented with different statistical methods for choosing the apprpriate number of components, such as choosing a threshold value and manual selection, we decided that the eigenvalue method was the most appropriate as the results in the other two methods changed significantly depending on which input values were used. For the eigenvalue method, the threshold of 1 means that 5 components should be used.
 
-b) In order to to justify how many components should be selected from an interpretation point of view, we examined the questions that made up each component to create general categories that each component represents. We found:
-Component 1 - Status/Power
-Component 2 - Leisure
-Component 3 - Reliability/Quality
-Component 4 - Knowledgable/DIY
-Component 5 - Value
-Componnet 6 - DIY
-Component 7 - Functionality
-Component 8 - Shopper
-Component 9 - Jack of All Trades
-
+  + In order to to justify how many components should be selected from an interpretation point of view, we examined the questions that made up each component to create general categories that each component represents. We found:
+Component 1 - Status/Power  
+Component 2 - Leisure  
+Component 3 - Reliability/Quality  
+Component 4 - Knowledgable/DIY  
+Component 5 - Value  
+Componnet 6 - DIY  
+Component 7 - Functionality  
+Component 8 - Shopper  
+Component 9 - Jack of All Trades  
 Based on this analysis, we don't believe that components 6 and higher add much value to the model. They include limited information, that in our judgement does not justify the additional complexity.
 
-c) From a business perspective, we would consider including up to 6 components in the analysis. We believe that each of components 1 through 5 and 7 include some potentially valuable information about the different customer segments, which would help us define our business strategy. We have chosen to exclude component 6, even though it is more explanatory than component 7, because it seems to overlap significantly with component 4.
+  + From a business perspective, we would consider including up to 6 components in the analysis. We believe that each of components 1 through 5 and 7 include some potentially valuable information about the different customer segments, which would help us define our business strategy. We have chosen to exclude component 6, even though it is more explanatory than component 7, because it seems to overlap significantly with component 4.
 
-3. Based on the selection of 5 components, we believe that each component describes the following key customer attributes:
-Component 1 - Status/Power
-Component 2 - Sports/Leisure
-Component 3 - Reliability/Quality
-Component 4 - Knowledgable/DIY
+3. Based on the selection of 5 components, we believe that each component describes the following key customer attributes:  
+Component 1 - Status/Power  
+Component 2 - Sports/Leisure  
+Component 3 - Reliability/Quality  
+Component 4 - Knowledgable/DIY  
 Component 5 - Value
 
 4. Through this process we came to the conclusion that there is also an art to data science, it is not just a purely statistical analysis. It requires thorough knowledge of the data being used as well as the business question being asked to be able to interpret the results in a meaningful manner. We also discovered that the composition of the various compnents changed as we varied the number of compnents being considered. This instability makes the data difficult to interpret.
@@ -324,16 +321,17 @@ iprint.df(t(head(NEW_ProjectData, 10)), scale=TRUE)
 
 **Answers**
 
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+1. By examining the factor scores of each respondent, we are able to summarize the questionaire results and look at how each individual scores in each of the five general categories represented by our five selected components. For example:
+- Respondent 1 appears to value status/power, the sports/leisure aspect of boating, and reliability/quality. However, they do not appear to be particularly techincally knowledgeable, or price sensitive.
+- Respondent 2 values the status/power aspect of a boat and is not price sensitive. They also do not appear to be technically knowledgable.
+- Respondent 3 values the status/power of a boat, and does not value the sports/leisure side. They also appear to be very price insensitive.
+
+2. If we were to select one variable to represent each of the five factors, we would choose the one with the most significance as indicated in the rotation matrix. These can be seen below:  
+Factor 1 - Q9 - Status symbol  
+Factor 2 - Q18 - Adventure 
+Factor 3 - Q4 - Brand  
+Factor 4 - Q11 - DIY  
+Factor 5 - Q2 - Price sensitivity
 
 <hr>\clearpage
 
@@ -353,7 +351,7 @@ A key family of methods used for segmentation is what is called **clustering met
 ```{r setupcluster, echo=TRUE, tidy=TRUE}
 # Please ENTER then original raw attributes to use for the segmentation (the "segmentation attributes")
 # Please use numbers, not column names, e.g. c(1:5, 7, 8) uses columns 1,2,3,4,5,7,8
-segmentation_attributes_used = c(28,25,27,14,20,8,3,12,13,5,9,11,2,30,24) #c(10,19,5,12,3) 
+segmentation_attributes_used = c(10,19,5,12,3) 
 
 # Please ENTER then original raw attributes to use for the profiling of the segments (the "profiling attributes")
 # Please use numbers, not column names, e.g. c(1:5, 7, 8) uses columns 1,2,3,4,5,7,8
