@@ -280,7 +280,7 @@ iprint.df(Rotated_Factors_thres, scale=TRUE)
 2. 
   + While we experimented with different statistical methods for choosing the apprpriate number of components, such as choosing a threshold value and manual selection, we decided that the eigenvalue method was the most appropriate as the results in the other two methods changed significantly depending on which input values were used. For the eigenvalue method, the threshold of 1 means that 5 components should be used.
 
-  + In order to to justify how many components should be selected from an interpretation point of view, we examined the questions that made up each component to create general categories that each component represents. We found:
+  + In order to to justify how many components should be selected from an interpretation point of view, we examined the questions that made up each component to create general categories that each component represents. We found:  
 Component 1 - Status/Power  
 Component 2 - Leisure  
 Component 3 - Reliability/Quality  
@@ -328,7 +328,7 @@ iprint.df(t(head(NEW_ProjectData, 10)), scale=TRUE)
 
 2. If we were to select one variable to represent each of the five factors, we would choose the one with the most significance as indicated in the rotation matrix. These can be seen below:  
 Factor 1 - Q9 - Status symbol  
-Factor 2 - Q18 - Adventure 
+Factor 2 - Q18 - Adventure  
 Factor 3 - Q4 - Brand  
 Factor 4 - Q11 - DIY  
 Factor 5 - Q2 - Price sensitivity
@@ -358,7 +358,7 @@ segmentation_attributes_used = c(10,19,5,12,3)
 profile_attributes_used = c(2:82) 
 
 # Please ENTER the number of clusters to eventually use for this report
-numb_clusters_used = 7 # for boats possibly use 5, for Mall_Visits use 3
+numb_clusters_used = 4 # for boats possibly use 5, for Mall_Visits use 3
 
 # Please enter the method to use for the segmentation:
 profile_with = "hclust" #  "hclust" or "kmeans"
@@ -440,8 +440,11 @@ Hierarchical_Cluster_distances <- dist(ProjectData_segment, method=distance_used
 Hierarchical_Cluster <- hclust(Hierarchical_Cluster_distances, method=hclust_method)
 # Display dendogram
 iplot.dendrogram(Hierarchical_Cluster)
+
+
 # TODO: Draw dendogram with red borders around the 3 clusters
-# rect.hclust(Hierarchical_Cluster, k=numb_clusters_used, border="red") 
+#rect.hclust(Hierarchical_Cluster, k=numb_clusters_used, border="red") 
+
 ```
 
 We can also plot the "distances" traveled before we need to merge any of the lower and smaller in size clusters into larger ones - the heights of the tree branches that link the clusters as we traverse the tree from its leaves to its root. If we have n observations, this plot has n-1 numbers, we see the first 20 here. 
@@ -541,16 +544,13 @@ iprint.df(round(cluster_profile_ratios-1, 2))
 
 **Answers**
 
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+1. We chose to break our clusters into four different segments, based on the dendrogram from the hierarchical cluster method. The numbers shown in the last table represent the average value to a question for each cluster, divided by the whole population mean, minus one. This results in a value of zero when the cluster mean is equal to the population mean, and values that higher or lower than zero as the cluster mean diverges from the population mean. The numbers that are most informative are those that have the greatest difference between segments.
+
+2. Based on the figures above, we identified points where each segment deviates significantly from the population mean. Some areas that we observed are:
++ Segment 1: Very uncomfortable performing their own repairs, not generally knowledgable about their boats.
++ Segment 2: Not price sensitive, don't view a boat as a status symbol, not too concerned about power
++ Segment 3: Not price sensitive, brand is very important, view boat as status symbol, knowledgable, prefer socializing highest income
++ Segment 4: Very value oriented, willing to purchase off-brand, prefer basic boat, most likely to boat alone, lowest income
 
 ## Step 8: Robustness Analysis
 
@@ -565,16 +565,22 @@ We should also consider the robustness of our analysis as we change the clusteri
 
 **Answers**
 
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+1. 
+  + We chose to break our clusters into four different segments, based on the dendrogram from the hierarchical cluster method, noting that we can see four distinct clusters of points at the base of the tree, with significant branch heights demonstrating clear differences between the customer segments.
+  
+  + While we tried segmenting the population into more clusters, we found that representing the observations in four clusters gave the most infomrative results when analysing the snake plot and ratio table showing the variances from the population means. Breaking the population into more segments did not result in higher descriptive power.
+  
+  + By dividing into four customer segments we are able to identify a manageable number of market segments to which we can actively target different products. For example, we would target Segment 3 with a premium model and would likely be a high profit margin segment. Segment 4 emerges as a questionable target market and would need further work to identify whether they can be monetized in a profitable way.
+
+2. We found and identified the following segments:
++ The Newbie (Segment 1): Very uncomfortable performing their own repairs, not generally knowledgable about their boats.
++ Practical Pat (Segment 2): Not price sensitive, don't view a boat as a status symbol, not too concerned about power
++ The Midlife Crisis (Segment 3): Not price sensitive, brand is very important, view boat as status symbol, knowledgable, prefer socializing highest income
++ Basic Brian (Segment 4): Very value oriented, willing to purchase off-brand, prefer basic boat, most likely to boat alone, lowest income
+
+3. By running the analysis with a different number of factors, it becomes a tradeoff between the amount of complexity in the model and the explanatory power of the analysis. We found that increasing the number of factors resulted in slightly different profile compositions, however used our judgement to focus in on the ones represented here. In a real life cases, we would refine the iterations over the course of several weeks based on our understanding of the customer data.
+
+4. In the case, CreeqBoat is trying to decide which boats to build and launch in the North American market. Based on our analysis here we have identified four key customer segments. Of these, two are relatively non-price sensitive and should be targeted as potential high profit margin customers. One of these cares most about status and would be attracted to a premium international brand and model of boat, while the other is more concerned with practicality. We would recommend launching with at least two different models catering specifically to these two separate segments.
 
 <hr>\clearpage
 
