@@ -277,16 +277,34 @@ iprint.df(Rotated_Factors_thres, scale=TRUE)
 
 **Answers**
 
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+1. For this analysis, we examined components 1, 2 and 3, focusing in on the five most significant questions in each component. In component 1, we saw lots of responses around the power and status of the boat. For component 2, the questions revolved around adventure, nature, and escape. Component 3 represented questions focused on the reliability and technical aspects of the boat. Intuitively, these results make business sense, as they represent well defined categories of aspects that people value in their boats.
+
+2. 
+a) While we experimented with different statistical methods for choosing the apprpriate number of components, such as choosing a threshold value and manual selection, we decided that the eigenvalue method was the most appropriate as the results in the other two methods changed significantly depending on which input values were used. For the eigenvalue method, the threshold of 1 means that 5 components should be used.
+
+b) In order to to justify how many components should be selected from an interpretation point of view, we examined the questions that made up each component to create general categories that each component represents. We found:
+Component 1 - Status/Power
+Component 2 - Leisure
+Component 3 - Reliability/Quality
+Component 4 - Knowledgable/DIY
+Component 5 - Value
+Componnet 6 - DIY
+Component 7 - Functionality
+Component 8 - Shopper
+Component 9 - Jack of All Trades
+
+Based on this analysis, we don't believe that components 6 and higher add much value to the model. They include limited information, that in our judgement does not justify the additional complexity.
+
+c) From a business perspective, we would consider including up to 6 components in the analysis. We believe that each of components 1 through 5 and 7 include some potentially valuable information about the different customer segments, which would help us define our business strategy. We have chosen to exclude component 6, even though it is more explanatory than component 7, because it seems to overlap significantly with component 4.
+
+3. Based on the selection of 5 components, we believe that each component describes the following key customer attributes:
+Component 1 - Status/Power
+Component 2 - Sports/Leisure
+Component 3 - Reliability/Quality
+Component 4 - Knowledgable/DIY
+Component 5 - Value
+
+4. Through this process we came to the conclusion that there is also an art to data science, it is not just a purely statistical analysis. It requires thorough knowledge of the data being used as well as the business question being asked to be able to interpret the results in a meaningful manner. We also discovered that the composition of the various compnents changed as we varied the number of compnents being considered. This instability makes the data difficult to interpret.
 
 ## Step 6:  Save factor scores 
 
